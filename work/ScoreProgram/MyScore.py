@@ -5,7 +5,7 @@ days_in_week = 7
 #Start Function
 def ReadScore():
     data_list = []
-    with open('ScoreProgram\Days_Score.txt', 'r') as file:
+    with open('work\ScoreProgram\Days_Score.txt', 'r') as file:
         data = file.readlines()
         for line in data:
             data_list.append(line.strip())
