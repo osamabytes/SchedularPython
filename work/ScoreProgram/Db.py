@@ -3,7 +3,7 @@ from models.Score import Score
 
 class SQL:
     def __init__(self):
-        file_path = r"DBQ=C:\Users\osama\Documents\Github\SchedularPython\work\ScoreProgram\Schedular.accdb;"
+        file_path = r"DBQ=C:\Users\osama\OneDrive\Documents\GitHub\SchedularPython\work\ScoreProgram\Schedular.accdb;"
         self.connection = connect(
             r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};' + file_path
         )
@@ -14,6 +14,10 @@ class SQL:
         return rows
     def Insert(self, score: Score):
         sql_query = f"INSERT INTO Scores (Habit, Score, DateRecord) VALUES ('{score.habit}', {score.score}, '{score.datetime}')"
+        self.cursor.execute(sql_query)
+        self.connection.commit()
+    def Delete(self):
+        sql_query = "DELETE FROM Scores"
         self.cursor.execute(sql_query)
         self.connection.commit()
     def Close(self):
