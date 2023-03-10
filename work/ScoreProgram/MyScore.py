@@ -1,3 +1,7 @@
+from models.Score import Score
+from Db import SQL
+from datetime import datetime
+
 days = []
 scores = []
 final_scores = dict()
@@ -36,4 +40,11 @@ for score in scores:
 for key, value in final_scores.items():
     final_scores[key] = round(value / days_in_week, 2)
 
-print(final_scores)
+# Record the Scores in DB
+sql = SQL()
+date_param = input("Enter Date by Year - Month - Date: ")
+dates = date_param.split(" ")
+for key, value in final_scores.items():
+    date = datetime(int(dates[0]), int(dates[1]), int(dates[2]))
+    sql.Insert(Score(date, key, value))
+sql.Close()

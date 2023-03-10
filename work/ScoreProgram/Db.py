@@ -16,6 +16,10 @@ class SQL:
         sql_query = f"INSERT INTO Scores (Habit, Score, DateRecord) VALUES ('{score.habit}', {score.score}, '{score.datetime}')"
         self.cursor.execute(sql_query)
         self.connection.commit()
+    def RemoveAll(self):
+        sql_query = "DELETE FROM Scores"
+        self.cursor.execute(sql_query)
+        self.connection.commit()
     def Close(self):
-        self.cursor.Close()
-        self.connection.Close()
+        self.cursor.close()
+        self.connection.close()
