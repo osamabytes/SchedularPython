@@ -3,7 +3,7 @@ from models.Score import Score
 
 class SQL:
     def __init__(self):
-        file_path = r"DBQ=C:\Users\osama\OneDrive\Documents\GitHub\SchedularPython\work\ScoreProgram\Schedular.accdb;"
+        file_path = r"DBQ=C:\Users\osama\Documents\Github\SchedularPython\work\ScoreProgram\Schedular.accdb;"
         self.connection = connect(
             r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};' + file_path
         )

@@ -20,9 +20,9 @@ def CalculateFinalScores(score_list):
         work = scr_data[0]
         scr = scr_data[1]
         if work in final_scores:
-            final_scores[work] += int(scr)
+            final_scores[work] += float(scr)
         else:
-            final_scores[work] = int(scr)
+            final_scores[work] = float(scr)
 #End Function
 
 days_scores = ReadScore()
