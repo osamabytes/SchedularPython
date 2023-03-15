@@ -9,7 +9,7 @@ days_in_week = 7
 #Start Function
 def ReadScore():
     data_list = []
-    with open('work\ScoreProgram\Days_Score.txt', 'r') as file:
+    with open('Days_Score.txt', 'r') as file:
         data = file.readlines()
         for line in data:
             data_list.append(line.strip())
@@ -42,9 +42,16 @@ for key, value in final_scores.items():
 
 # Record the Scores in DB
 sql = ScoreSQL()
-date_param = input("Enter Date by Year - Month - Date: ")
-dates = date_param.split(" ")
+# input for the date
+start_date = input("Enter Start Date by Year - Month - Date: ")
+end_date = input("Enter End Date by Year - Month - Date: ")
+# split start and end date
+start_datetime_arr = start_date.split(" ")
+end_datetime_arr = end_date.split(" ")
 for key, value in final_scores.items():
-    date = datetime(int(dates[0]), int(dates[1]), int(dates[2]))
-    sql.Insert(Score(date, key, value))
+    sql.Insert(Score(
+            datetime(int(start_datetime_arr[0]), int(start_datetime_arr[1]), int(start_datetime_arr[2])), 
+            datetime(int(end_datetime_arr[0]), int(end_datetime_arr[1]), int(end_datetime_arr[2])), 
+            key, value)
+        )
 sql.Close()

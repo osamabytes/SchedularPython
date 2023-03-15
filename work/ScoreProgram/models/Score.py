@@ -1,13 +1,19 @@
 class Score:
-    def __init__(self, datetime, habit, score):
-        self.datetime = datetime
+    def __init__(self, startDateTime, endDateTime, habit, score):
+        self.startDateTime = startDateTime
+        self.endDateTime = endDateTime
         self.habit = habit
         self.score = score
     
-    def set_datetime(self, datetime):
-        self.datetime = datetime
-    def get_datetime(self):
-        return self.datetime
+    def set_startDateTime(self, startDateTime):
+        self.startDateTime = startDateTime
+    def get_startDateTime(self):
+        return self.startDateTime
+    
+    def set_endDateTime(self, endDateTime):
+        self.endDateTime = endDateTime
+    def get_endDateTime(self):
+        return self.endDateTime
     
     def set_habit(self, habit):
         self.habit = habit

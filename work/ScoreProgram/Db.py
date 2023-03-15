@@ -16,7 +16,7 @@ class ScoreSQL:
         rows = self.cursor.fetchall()
         return rows
     def Insert(self, score: Score):
-        sql_query = f"INSERT INTO Scores (Habit, Score, DateRecord) VALUES ('{score.habit}', {score.score}, '{score.datetime}')"
+        sql_query = f"INSERT INTO Scores (StartDate, EndDate, Habit, Score) VALUES ('{score.startDateTime}', '{score.endDateTime}', '{score.habit}', {score.score})"
         self.cursor.execute(sql_query)
         self.connection.commit()
     def RemoveAll(self):
